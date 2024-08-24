@@ -1,0 +1,23 @@
+# 应用服务器与spring框架是独立存在的,所以配置名不以spring开头
+server:
+  port: 8761
+
+# 使用spring框架的应用
+spring:
+  application:
+    name: eureka-server
+
+# eureka服务的配置
+eureka:
+  client:
+    register-with-eureka: false
+    fetch-registry: false
+  instance:
+    hostname: localhost
+
+# management的配置
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
