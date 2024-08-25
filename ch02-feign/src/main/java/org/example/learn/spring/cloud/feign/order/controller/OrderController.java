@@ -1,4 +1,4 @@
-package org.example.learn.spring.cloud.hello.order.controller;
+package org.example.learn.spring.cloud.feign.order.controller;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
@@ -7,6 +7,7 @@ import org.example.learn.spring.cloud.commons.model.dto.BaseResponseData;
 import org.example.learn.spring.cloud.commons.model.dto.OrderDto;
 import org.example.learn.spring.cloud.commons.model.dto.UserDto;
 import org.example.learn.spring.cloud.commons.util.ResponseUtils;
+import org.example.learn.spring.cloud.feign.order.third.UserServiceClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpMethod;
@@ -23,6 +24,9 @@ public class OrderController {
 
     @Autowired
     private RestTemplate restTemplate;
+
+    @Autowired
+    UserServiceClient userServiceClient;
 
     @GetMapping("/{orderId}")
     public BaseResponseData<OrderDto> getOrderById(@PathVariable String orderId) throws JsonProcessingException {
@@ -44,6 +48,16 @@ public class OrderController {
         OrderDto orderDto = new OrderDto();
         orderDto.setOrderId(orderId);
         orderDto.setUserInfo(responseData.getBody().getData());;
+        return ResponseUtils.ok(orderDto);
+    }
+
+    @GetMapping("/feign/{orderId}")
+    public BaseResponseData<OrderDto> getOrderByIdFeign(@PathVariable String orderId) {
+        BaseResponseData<UserDto> responseData = userServiceClient.getUserById(1L);
+
+        OrderDto orderDto = new OrderDto();
+        orderDto.setOrderId(orderId);
+        orderDto.setUserInfo(responseData.getData());;
         return ResponseUtils.ok(orderDto);
     }
 }
