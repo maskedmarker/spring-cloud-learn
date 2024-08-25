@@ -17,6 +17,9 @@ feign:
         connectTimeout: 5000   # 连接超时时间
         readTimeout: 5000      # 读取超时时间
 
-#logging:
-#  level:
-#    org.example.learn.spring.cloud.feign.order.third.UserServiceClient: FULL # 启用详细日志
+logging:
+  level:
+    root: INFO  # 设置全局日志级别为 INFO
+    org.example.learn.spring.cloud.feign: DEBUG  # 设置特定包的日志级别为 DEBUG
+  pattern:
+    console: "[%d{yyyy-MM-dd'T'HH:mm:ss.SSSZ}] [%-5p] [%t] [%c]:[%M:%L] - %m%n"

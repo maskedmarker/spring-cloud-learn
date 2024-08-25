@@ -10,9 +10,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 /**
  * @FeignClient(name = "user-service")与服务在 Eureka（或其他服务发现机制）中的注册名称相同
  * @GetMapping("/users/{id}") 用于指定远程服务的 API 路径
+ *
  */
 //@Service
-@FeignClient(name = "user-service"/*, configuration = FeignConfig.class*/)
+@FeignClient(name = "user-service", configuration = FeignConfig.class)
 public interface UserServiceClient {
 
     @GetMapping("/users/{id}")
