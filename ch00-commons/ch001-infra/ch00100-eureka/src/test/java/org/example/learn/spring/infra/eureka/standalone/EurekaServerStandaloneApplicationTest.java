@@ -1,4 +1,4 @@
-package org.example.learn.spring.cloud.eureka.standalone;
+package org.example.learn.spring.infra.eureka.standalone;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,4 +1,4 @@
-package org.example.learn.spring.cloud.eureka.standalone;
+package org.example.learn.spring.infra.eureka.standalone;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
