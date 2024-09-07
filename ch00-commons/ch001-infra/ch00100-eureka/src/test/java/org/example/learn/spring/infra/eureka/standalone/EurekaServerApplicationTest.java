@@ -13,7 +13,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.springframework.boot.test.context.SpringBootTest.WebEnvironment.DEFINED_PORT;
 
 @SpringBootTest(webEnvironment = DEFINED_PORT)
-public class EurekaServerStandaloneApplicationTest {
+public class EurekaServerApplicationTest {
 
     @Autowired
     private TestRestTemplate testRestTemplate;
